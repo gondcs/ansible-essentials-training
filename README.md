@@ -117,3 +117,12 @@ localhost                  : ok=4    changed=2    unreachable=0    failed=0    s
 $ ls /tmp/*-created
 /tmp/direct-created	/tmp/ssh-created
 ```
+### forth experiment
+
+#### test
+
+```
+ap -i hosts tasks/2-4-tasks.yml -e file_state=touch
+ap -i hosts tasks/2-4-tasks.yml -e file_state=absent
+ap -i hosts tasks/2-4-tasks.yml -e file_state=touch --start-at-task='the second task'
+```
