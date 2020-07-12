@@ -202,7 +202,6 @@ ap -i 2-5-inventory tasks/2-13-tasks.yml --tags create --check
 
 ### first experiment
 
-
 #### role bootstrap
 
 The command to bootstrap the role
@@ -218,7 +217,7 @@ ap -i 2-5-inventory create_play.yml --check
 ap -i 2-5-inventory create_role.yml
 ```
 
-### second experiment
+### second experiment
 
 #### test
 
@@ -226,7 +225,8 @@ ap -i 2-5-inventory create_role.yml
 ap -i 2-5-inventory create_role.yml 
 ap -i 2-5-inventory create_role.yml -e user_state=absent
 ```
-#### result
+
+#### expected result
 
 ```
 PLAY [all] *************************************************************************************************************
