@@ -258,3 +258,102 @@ web1                       : ok=2    changed=1    unreachable=0    failed=1    s
 web2                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 ```
 
+### third experiment
+
+### test
+
+```
+ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert
+
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [db1]
+ok: [web1]
+ok: [web2]
+ok: [db2]
+
+TASK [include_role : create_user] **************************************************************************************
+
+TASK [create_user : Create user on remote host] ************************************************************************
+changed: [db1]
+changed: [web2]
+changed: [db2]
+changed: [web1]
+
+TASK [create_user : Publish local ssh public key for remote login] *****************************************************
+changed: [web2]
+changed: [db1]
+changed: [db2]
+changed: [web1]
+
+TASK [create_user : Add bashrc to include host and user] ***************************************************************
+changed: [web2]
+changed: [web1]
+changed: [db1]
+changed: [db2]
+
+PLAY RECAP *************************************************************************************************************
+db1                        : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+web1                       : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+web2                       : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert -e user_state=absent
+ansible -i 2-5-inventory all -m command -a 'ls /home'
+web1 | CHANGED | rc=0 >>
+bert
+ruben
+db1 | CHANGED | rc=0 >>
+bert
+ruben
+web2 | CHANGED | rc=0 >>
+bert
+ruben
+db2 | CHANGED | rc=0 >>
+bert
+ruben
+ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert -e user_state=absent
+
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [web2]
+ok: [db2]
+ok: [db1]
+ok: [web1]
+
+TASK [include_role : create_user] **************************************************************************************
+
+TASK [create_user : Create user on remote host] ************************************************************************
+changed: [web2]
+changed: [web1]
+changed: [db1]
+changed: [db2]
+
+TASK [create_user : Publish local ssh public key for remote login] *****************************************************
+fatal: [db2]: FAILED! => {"changed": false, "msg": "Failed to lookup user bert: 'getpwnam(): name not found: bert'"}
+fatal: [web2]: FAILED! => {"changed": false, "msg": "Failed to lookup user bert: 'getpwnam(): name not found: bert'"}
+fatal: [web1]: FAILED! => {"changed": false, "msg": "Failed to lookup user bert: 'getpwnam(): name not found: bert'"}
+fatal: [db1]: FAILED! => {"changed": false, "msg": "Failed to lookup user bert: 'getpwnam(): name not found: bert'"}
+
+PLAY RECAP *************************************************************************************************************
+db1                        : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+db2                        : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+web1                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+web2                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+ansible -i 2-5-inventory all -m command -a 'ls /home'
+db2 | CHANGED | rc=0 >>
+bert
+ruben
+web2 | CHANGED | rc=0 >>
+bert
+ruben
+db1 | CHANGED | rc=0 >>
+bert
+ruben
+web1 | CHANGED | rc=0 >>
+bert
+ruben
+```
