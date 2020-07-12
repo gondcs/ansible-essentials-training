@@ -126,3 +126,12 @@ ap -i hosts tasks/2-4-tasks.yml -e file_state=touch
 ap -i hosts tasks/2-4-tasks.yml -e file_state=absent
 ap -i hosts tasks/2-4-tasks.yml -e file_state=touch --start-at-task='the second task'
 ```
+
+### fifth experiment
+
+#### test
+
+```
+ap -i 2-5-inventory tasks/2-5-tasks.yml -e file_state=touch
+ap -i 2-5-inventory tasks/2-5-tasks.yml -e file_state=absent
+```
