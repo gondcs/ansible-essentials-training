@@ -176,4 +176,12 @@ ap -i 2-5-inventory tasks/2-11-tasks.yml -e file_state=absent
 ap -i 2-5-inventory tasks/2-12-tasks.yml
 ```
 
+### thirteenth experiment
+
+#### test
+
+```
+ap -i 2-5-inventory tasks/2-13-tasks.yml --tags create
+ap -i 2-5-inventory tasks/2-13-tasks.yml --tags destroy
+```
 
