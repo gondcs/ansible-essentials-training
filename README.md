@@ -151,3 +151,12 @@ ap -i 2-5-inventory tasks/2-8-tasks.yml --tags create
 ap -i 2-5-inventory tasks/2-9-tasks.yml -e file_state=touch
 ```
 
+### tenth experiment
+
+#### test
+
+```
+ap -i 2-5-inventory tasks/2-10-tasks.yml -e pkg_state=latest -e file_state=touch
+```
+
+
