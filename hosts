@@ -1,0 +1,16 @@
+[all]
+web1:2220	
+web2:2221
+db1:2222
+db2:2223
+[web]
+web1
+web2
+[db]
+db1
+db2
+[backup]
+db2
+
+[all:vars]
+ansible_user=root
