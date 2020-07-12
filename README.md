@@ -84,3 +84,36 @@ backup-file file
   ansible-playbook -i hosts tasks/2-2-tasks.yml --tags create-file
   ansible-playbook -i hosts tasks/2-2-tasks.yml --tags delete-file
 ```
+
+### third experiment
+
+#### test
+
+```
+$ ansible-playbook -i hosts tasks/2-3-tasks.yml 
+```
+
+#### result
+```
+PLAY [localhost] ****************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [localhost]
+
+TASK [create a file via ssh connection] *****************************************************************************
+changed: [localhost]
+
+PLAY [localhost] ****************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************
+ok: [localhost]
+
+TASK [create a file via direct local connection] ********************************************************************
+changed: [localhost]
+
+PLAY RECAP **********************************************************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+$ ls /tmp/*-created
+/tmp/direct-created	/tmp/ssh-created
+```
