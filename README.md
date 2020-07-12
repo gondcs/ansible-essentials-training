@@ -388,3 +388,50 @@ ANSIBLE_VAULT;1.1;AES256
 $ ansible-vault edit vault
 vault_password: ThisIsNotAgoodPassword
 ```
+
+### usage within playbooks
+
+```
+$ ap -i 2-5-inventory tasks/vault.yml --ask-vault-pass
+Vault password: 
+
+PLAY [all] ***************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************
+ok: [web2]
+ok: [db1]
+ok: [db2]
+ok: [web1]
+
+TASK [embed the secure password in a file] *******************************************************************************************
+changed: [web1]
+changed: [db2]
+changed: [db1]
+changed: [web2]
+
+TASK [clean up the secure password file] *********************************************************************************************
+changed: [web1]
+changed: [web2]
+changed: [db1]
+changed: [db2]
+
+TASK [debug the password that was encrypted] *****************************************************************************************
+ok: [web1] => {
+    "msg": "the password is thisIsNotAgoodPassword"
+}
+ok: [web2] => {
+    "msg": "the password is thisIsNotAgoodPassword"
+}
+ok: [db1] => {
+    "msg": "the password is thisIsNotAgoodPassword"
+}
+ok: [db2] => {
+    "msg": "the password is thisIsNotAgoodPassword"
+}
+
+PLAY RECAP ***************************************************************************************************************************
+db1                        : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+db2                        : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+web1                       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+web2                       : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+```
