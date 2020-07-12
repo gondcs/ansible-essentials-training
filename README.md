@@ -263,7 +263,7 @@ web2                       : ok=2    changed=1    unreachable=0    failed=1    s
 ### test
 
 ```
-ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert
+$ ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert
 
 PLAY [all] *************************************************************************************************************
 
@@ -299,8 +299,8 @@ db2                        : ok=4    changed=3    unreachable=0    failed=0    s
 web1                       : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 web2                       : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
-ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert -e user_state=absent
-ansible -i 2-5-inventory all -m command -a 'ls /home'
+$ ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert -e user_state=absent
+$ ansible -i 2-5-inventory all -m command -a 'ls /home'
 web1 | CHANGED | rc=0 >>
 bert
 ruben
@@ -313,7 +313,7 @@ ruben
 db2 | CHANGED | rc=0 >>
 bert
 ruben
-ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert -e user_state=absent
+$ ansible-playbook -i 2-5-inventory create_role.yml -e user_name=bert -e user_state=absent
 
 PLAY [all] *************************************************************************************************************
 
@@ -343,7 +343,7 @@ db2                        : ok=2    changed=1    unreachable=0    failed=1    s
 web1                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 web2                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 
-ansible -i 2-5-inventory all -m command -a 'ls /home'
+$ ansible -i 2-5-inventory all -m command -a 'ls /home'
 db2 | CHANGED | rc=0 >>
 bert
 ruben
