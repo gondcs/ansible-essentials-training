@@ -1,4 +1,4 @@
-# ansible essentials learning course files
+# ansible essential training
 
 ## prepare the environment
 
