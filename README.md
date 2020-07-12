@@ -184,4 +184,16 @@ ap -i 2-5-inventory tasks/2-12-tasks.yml
 ap -i 2-5-inventory tasks/2-13-tasks.yml --tags create
 ap -i 2-5-inventory tasks/2-13-tasks.yml --tags destroy
 ```
+### fourteenth experiment
 
+#### test
+
+```
+ap -i 2-5-inventory tasks/2-13-tasks.yml --tags create --check
+```
+
+#### expected
+
+* There should be no /tmp/2-13-template.txt created in any of the web1, web2, db1 and db2 hosts
+* Ansible should finish succesfully
+* Ansible should create temporary files in all the remote hosts (/tmp/ansible_setup_payload_*)
