@@ -143,4 +143,11 @@ ap -i 2-5-inventory tasks/2-5-tasks.yml -e file_state=absent
 ```
 ap -i 2-5-inventory tasks/2-8-tasks.yml --tags create
 ```
+### ninth experiment
+
+#### test
+
+```
+ap -i 2-5-inventory tasks/2-9-tasks.yml -e file_state=touch
+```
 
