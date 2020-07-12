@@ -167,3 +167,13 @@ ap -i 2-5-inventory tasks/2-10-tasks.yml -e pkg_state=latest -e file_state=touch
 ap -i 2-5-inventory tasks/2-11-tasks.yml -e file_state=touch
 ap -i 2-5-inventory tasks/2-11-tasks.yml -e file_state=absent
 ```
+
+### twelveth experiment
+
+#### test
+
+```
+ap -i 2-5-inventory tasks/2-12-tasks.yml
+```
+
+
