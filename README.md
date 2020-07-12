@@ -198,3 +198,22 @@ ap -i 2-5-inventory tasks/2-13-tasks.yml --tags create --check
 * Ansible should finish succesfully
 * Ansible should create temporary files in all the remote hosts (/tmp/ansible_setup_payload_*)
 
+## Roles
+
+### first experiment
+
+
+#### role bootstrap
+
+The command to bootstrap the role
+
+```
+ansible-galaxy init create_user
+```
+
+#### test
+
+```
+ap -i 2-5-inventory create_play.yml --check
+ap -i 2-5-inventory create_role.yml
+```
