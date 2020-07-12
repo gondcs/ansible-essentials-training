@@ -76,3 +76,11 @@ file
 ssh root@db2 -p 2223
 backup-file file
 ```
+### second experiment
+
+#### test
+
+```
+  ansible-playbook -i hosts tasks/2-2-tasks.yml --tags create-file
+  ansible-playbook -i hosts tasks/2-2-tasks.yml --tags delete-file
+```
