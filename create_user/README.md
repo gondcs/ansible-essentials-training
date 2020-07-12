@@ -1,12 +1,13 @@
 create_user
 =========
 
-A brief description of the role goes here.
+Create a user and upload an ssh public key for remote authentication
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+No specifi required Ansible
+Need a default ssh public key or a specific key needs to be called out in a variable.
 
 Role Variables
 --------------
@@ -15,27 +16,34 @@ Role Variables
 user_name: default
 # Define the user state present or absent
 user_state: present
+# Define the path to the ssh public key
+ssh_key: ~/.ssh/id_rsa.pub
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None 
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+---
+- hosts: all
+  tasks:
+    - include_role:
+        name: create_user
+      vars:
+        user_name: ruben 
+        ssh_key: ~/.ssh/id_rsa.pub
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+gdelca5@gmail.com
+credits to info@kumul.us
