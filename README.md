@@ -217,3 +217,44 @@ ansible-galaxy init create_user
 ap -i 2-5-inventory create_play.yml --check
 ap -i 2-5-inventory create_role.yml
 ```
+
+### second experiment
+
+#### test
+
+```
+ap -i 2-5-inventory create_role.yml 
+ap -i 2-5-inventory create_role.yml -e user_state=absent
+```
+#### result
+
+```
+PLAY [all] *************************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [web1]
+ok: [db1]
+ok: [db2]
+ok: [web2]
+
+TASK [include_role : create_user] **************************************************************************************
+
+TASK [create_user : Create user on remote host] ************************************************************************
+changed: [web1]
+changed: [db1]
+changed: [web2]
+changed: [db2]
+
+TASK [create_user : Publish local ssh public key for remote login] *****************************************************
+fatal: [db1]: FAILED! => {"changed": false, "msg": "Failed to lookup user ruben: 'getpwnam(): name not found: ruben'"}
+fatal: [web1]: FAILED! => {"changed": false, "msg": "Failed to lookup user ruben: 'getpwnam(): name not found: ruben'"}
+fatal: [db2]: FAILED! => {"changed": false, "msg": "Failed to lookup user ruben: 'getpwnam(): name not found: ruben'"}
+fatal: [web2]: FAILED! => {"changed": false, "msg": "Failed to lookup user ruben: 'getpwnam(): name not found: ruben'"}
+
+PLAY RECAP *************************************************************************************************************
+db1                        : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+db2                        : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+web1                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+web2                       : ok=2    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+```
+

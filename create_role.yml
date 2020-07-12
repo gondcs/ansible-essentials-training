@@ -5,5 +5,4 @@
         name: create_user
       vars:
         user_name: ruben 
-        user_state: present
         ssh_key: ~/.ssh/id_rsa.pub
