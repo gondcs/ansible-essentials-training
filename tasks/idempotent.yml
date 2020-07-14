@@ -22,7 +22,7 @@
   - name: remove the file we created
     file:
       path: /tmp/*idempotent.txt
-      state: abstent
+      state: absent
     tags:
       - destroy
 
